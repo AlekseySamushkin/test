@@ -1,5 +1,24 @@
 .App {
   text-align: center;
+  background: rgb(234, 230, 223);
+  display: flex;
+  justify-content: center;
+}
+
+.App .upLining {
+  background: rgb(0, 168, 132);
+  position: absolute;
+  height: 10vw;
+  width: 100%;
+}
+
+.App .content {
+  width: 80vw;
+  position: absolute;
+  height: 80vh;
+  background: rgb(240, 242, 245);
+  margin-top: 10vh;
+  display: flex;
 }
 
 .App-logo {
