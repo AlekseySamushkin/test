@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import './index.css';
+import './index.scss';
 import {setActiveContact} from "../../../redux/actions/contacts";
 
 const ContactsItem = ({ id, name }) => {
@@ -10,7 +10,10 @@ const ContactsItem = ({ id, name }) => {
     }
     return (
         <div onClick={handleClickInChat} className="ContactsItem">
-            {name}
+            <div className="logo">
+
+            </div>
+            <div className="name">{name}</div>
         </div>
     )
 }

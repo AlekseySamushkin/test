@@ -7,7 +7,7 @@ import { ReactComponent as Arrow } from '../../assets/Arrow.svg';
 
 export const InputInChat = ({ chatId }) => {
     const [currentValue, setCurrentValue] = useState('');
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
     const dsp = useDispatch();
 
     const handleSendMessage = () => {
@@ -26,7 +26,7 @@ export const InputInChat = ({ chatId }) => {
             value={currentValue}
           />
           <button
-            disabled={!currentValue}
+            disabled={!currentValue || currentValue.length > 10000}
             onClick={handleSendMessage}
           >
               <Arrow />

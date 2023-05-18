@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import ContactsItem from "./item";
-import './index.css';
+import './index.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {getContacts} from "../../redux/actions/contacts";
 

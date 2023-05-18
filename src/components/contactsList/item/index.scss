@@ -1,0 +1,16 @@
+.ContactsItem {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    .logo {
+        border-radius: 50%;
+        min-width: 49px;
+        height: 49px;
+        background: white;
+        margin-right: 15px;
+    }
+    .name {
+        overflow-wrap: anywhere;
+        text-align: initial;
+    }
+}
