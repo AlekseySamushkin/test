@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import cn from "classnames"
 import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
@@ -44,15 +44,13 @@ const Chat = React.memo(() => {
     const dsp = useDispatch();
     const activeContact = useSelector(state=> state.contacts.activeContact)
     const { messages } = useSelector(state=> state.messages)
-    console.log('activeContact', activeContact)
-    const handleGetMessages = () => {
-        console.log('handleGetMessages', activeContact)
+    const handleGetMessages = useCallback(() => {
         if (activeContact) {
             dsp(getMessages({
                 chatId: activeContact,
             }))
         }
-    }
+    },[activeContact, dsp])
 
     useEffect(()=> {
        handleGetMessages();
@@ -60,14 +58,13 @@ const Chat = React.memo(() => {
        return () => {
            clearInterval(interval);
        }
-    },[activeContact])
+    },[handleGetMessages, activeContact])
 
-    console.log('messages', messages)
     return (
         <div className="Chat">
             {
-                // messages && messages.map(el=> (
-                mockData.map(el=> (
+                messages && messages.map(el=> (
+                // mockData.map(el=> (
                     <div
                         key={el.idMessage}
                         className={cn('messageContainer', {myMessage: el.type === "outgoing" })}

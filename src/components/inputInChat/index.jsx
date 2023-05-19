@@ -1,15 +1,24 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './index.scss';
-import {useDispatch} from "react-redux";
-import {sendMessage} from "../../redux/actions/messages";
+import {useDispatch, useSelector} from "react-redux";
+import {sendMessage, setSendedMessage} from "../../redux/actions/messages";
 import { ReactComponent as Arrow } from '../../assets/Arrow.svg';
 
 
 export const InputInChat = ({ chatId }) => {
+    const { sendedMessage } = useSelector(state=> state.messages)
     const [currentValue, setCurrentValue] = useState('');
     // const [error, setError] = useState('');
     const dsp = useDispatch();
 
+    useEffect(()=> {
+        if (sendedMessage) {
+            dsp(setSendedMessage({
+                value: false
+            }))
+            setCurrentValue('')
+        }
+    },[dsp, sendedMessage])
     const handleSendMessage = () => {
         dsp(sendMessage({
             chatId,
