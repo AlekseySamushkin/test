@@ -6,7 +6,6 @@ import {ApiTokenInstance, domain, IdInstance} from "../../constants";
 
 export function* getMessagesSaga({ $payload }) {
     try {
-        console.log('$payload', $payload)
         const requestPayload = {
             url: `${domain}/waInstance${IdInstance}/GetChatHistory/${ApiTokenInstance}`,
             method: 'post',
